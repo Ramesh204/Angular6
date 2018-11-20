@@ -1,4 +1,4 @@
-<div *ngIf="employee">
+<!--<div *ngIf="employee">
   <div>
     <label>FirstName:</label>{{employee.firstName}}
   </div>
@@ -20,12 +20,38 @@
   <span class="btn btn-success" (click)="showUpdateForm()">Update</span>
   <hr/>
   
+</div> --> 
+
+
+<div  *ngIf="employee"  class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>EmailAddress</th>
+        <th>PhoneNumber</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="info">
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.emailAddress}}</td>
+        <td>{{employee.phoneNumber}}</td>
+        <td>
+            <span class="btn btn-danger" (click)="deleteEmp()">Delete</span> 
+            <span class="btn btn-success" (click)="showUpdateForm()">Update</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
 
-
-<div [hidden]="updated" >
+<div [hidden]="updated" class="col-lg-6" style="margin-left:15%;" >
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="emailAddress">EmailAddress</label>

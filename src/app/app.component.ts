@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Employee Page';
+  title = 'Software Solutions';
 
   constructor(private authService:AuthService){}
 

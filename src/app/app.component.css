@@ -1,5 +1,17 @@
 a{
-    font-size: 30px;
-    color:blue;
+    font-size: 35px;
+    color: white;
+    
+}
+
+h1{
+    text-align: center;
+    
+}
+
+button#logoutbtn{
+    float: right;
+    font-size:25px;
+    border-radius:5px;
     
 }

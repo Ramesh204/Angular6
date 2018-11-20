@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
-  {path:'',redirectTo:'employee',pathMatch:'full'},
+  {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'employee', component:EmployeeListComponent,canActivate:[LoggedInGuard]},
   {path:'add', component:CreateEmployeeComponent,canActivate:[LoggedInGuard]},
   {path:'login',component:LoginComponent}

@@ -1,15 +1,27 @@
 
-<div style="padding:20px;">
- <h1 style="color: yellow">{{title}}</h1>
-  <nav>
-    <a [routerLink]="['/login']">Login |</a>
-   <a [routerLink]="['/employee']">Employees |</a>
-   <a [routerLink]="['/add']">Add</a>
-  </nav>
+<div class="jumbotron">
+    <h1 >{{title}}</h1>
 </div>
 
-<div *ngIf="authService.getUser()">
-  <button type="submit" (click)="logout()" class="btn btn-defalut">Logout</button>
-</div>
+
+
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">  
+    
+    <a class="navbar-brand" [routerLink]="['/login']">Login |</a>
+    <a class="navbar-brand" [routerLink]="['/employee']">Employees |</a>
+    <a class="navbar-brand" [routerLink]="['/add']">Add</a>
+
+  
+
+    <button  *ngIf="authService.getUser()" id="logoutbtn" type="submit" (click)="logout()" class="btn btn-danger">Logout</button> 
+
+  
+
+  </div>
+  </nav>
+
+
+
 
 <router-outlet></router-outlet>

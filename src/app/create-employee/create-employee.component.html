@@ -1,7 +1,8 @@
-<h3>Create Employee</h3>
 
-<div [hidden]="submitted" >
-  <form (ngSubmit)="onSubmit()">
+
+<div [hidden]="submitted" class="col-lg-6" style="margin-left:15%;" >
+    <h1>Create Employee</h1>
+  <form (ngSubmit)="onSubmit()" >
     <div class="form-group">
       <label for="empid">EmpId</label>
       <input type="number" class="form-control" id="empid" [(ngModel)]="employee.empid" name="empid">

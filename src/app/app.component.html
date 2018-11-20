@@ -2,9 +2,14 @@
 <div style="padding:20px;">
  <h1 style="color: yellow">{{title}}</h1>
   <nav>
+    <a [routerLink]="['/login']">Login |</a>
    <a [routerLink]="['/employee']">Employees |</a>
    <a [routerLink]="['/add']">Add</a>
   </nav>
+</div>
+
+<div *ngIf="authService.getUser()">
+  <button type="submit" (click)="logout()" class="btn btn-defalut">Logout</button>
 </div>
 
 <router-outlet></router-outlet>

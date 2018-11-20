@@ -12,6 +12,10 @@ export class EmployeeDetailsComponent implements OnInit {
   
   @Input() employee : Employee;
 
+  updated = true;
+
+
+
   constructor(private employeeService:EmployeeService,private listComponent:EmployeeListComponent) { }
 
   ngOnInit() {
@@ -24,6 +28,22 @@ export class EmployeeDetailsComponent implements OnInit {
      },
      error=>console.log(error));
   }
+
+  updateEmp(){
+    this.employeeService.updateEmplyoee(this.employee.empid,this.employee).
+    subscribe(data=>console.log(data),error=>console.log(error));
+  }
+
+  onSubmit(){
+    this.updated=true;
+    this.updateEmp();
+  }
+  
+  showUpdateForm(){
+    this.updated=false;
+    console.log("hi");
+  }
+
 
   
   

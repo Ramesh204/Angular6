@@ -17,6 +17,27 @@
  
   <span class="btn btn-danger" (click)="deleteEmp()">Delete</span>
 
+  <span class="btn btn-success" (click)="showUpdateForm()">Update</span>
   <hr/>
   
+</div>
+
+
+
+
+<div [hidden]="updated" >
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="emailAddress">EmailAddress</label>
+      <input type="text" class="form-control" id="emailAddress" [(ngModel)]="employee.emailAddress" name="emailAddress">
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">PhoneNumber</label>
+      <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="employee.phoneNumber" name="phoneNumber">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
 </div>

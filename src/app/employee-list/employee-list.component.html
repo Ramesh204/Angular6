@@ -2,13 +2,12 @@
 <h1 class="jumbotron">Employees</h1>
 </div>
 
-
 <div *ngFor="let employee of employees | async">
     
- 
   <app-employee-details [employee]='employee'></app-employee-details>
 </div>
- 
+
+
 <div class="container">
   <button type="button" id="deletebtn" class="button btn-danger" (click)='deleteEmps()'>Delete All</button>
 </div>

@@ -1,39 +1,18 @@
-<!--<div *ngIf="employee">
-  <div>
-    <label>FirstName:</label>{{employee.firstName}}
-  </div>
 
-  <div>
-    <label>LastName:</label>{{employee.lastName}}
-  </div>
-
-  <div>
-    <label>EmailAddress:</label>{{employee.emailAddress}}
-  </div>
-
-  <div>
-    <label>PhoneNumber:</label>{{employee.phoneNumber}}
-  </div>
- 
-  <span class="btn btn-danger" (click)="deleteEmp()">Delete</span>
-
-  <span class="btn btn-success" (click)="showUpdateForm()">Update</span>
-  <hr/>
-  
-</div> --> 
 
 
 <div  *ngIf="employee"  class="container">
   <table class="table">
-    <thead>
-      <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>EmailAddress</th>
-        <th>PhoneNumber</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+      <thead>
+          <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>EmailAddress</th>
+            <th>PhoneNumber</th>
+            <th>Actions</th>
+          </tr>
+        
+        </thead>
     <tbody>
       <tr class="info">
         <td>{{employee.firstName}}</td>

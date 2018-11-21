@@ -1,0 +1,33 @@
+<form class="container-fluid col-lg-6" >
+  <div class="form-group">
+    <label for="empid">EmpId</label>
+    <input type="number" class="form-control" id="empid" #empid>
+  </div>
+
+  <button type="submit" class="btn btn-success" (click)="getEmp(empid.value)">Submit</button> 
+
+</form>
+
+
+
+<div  *ngIf="employee"  class="container">
+  <table class="table">
+      <thead>
+          <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>EmailAddress</th>
+            <th>PhoneNumber</th>
+          </tr>
+        
+        </thead>
+    <tbody>
+      <tr class="info">
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.emailAddress}}</td>
+        <td>{{employee.phoneNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

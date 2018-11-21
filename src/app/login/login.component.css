@@ -3,7 +3,29 @@ a{
     color:red;
 }
 
-h1{
-    color:green;
+h2{
+    
+    text-align: center;
 }
+
+form{
+   
+    padding: 10px;
+}
+
+img{
+    width:20%;
+    margin-left:40%;
+    border-radius: 30px;
+}
+
+
+form{
+    border:2px solid black;
+    border-radius:5px;
+    padding: 20px;
+    
+    
+}
+
 

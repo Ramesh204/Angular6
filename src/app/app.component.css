@@ -13,5 +13,6 @@ button#logoutbtn{
     float: right;
     font-size:25px;
     border-radius:5px;
+    width:10%;
     
 }

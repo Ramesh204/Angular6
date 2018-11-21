@@ -1,33 +1,30 @@
 
 
-<div class="alert alert-danger" role="alert" *ngIf="message"> 
-  {{message}}
-</div>
 
-<form class="col-lg-6" style="margin-left:15%;"  *ngIf="!authService.getUser()">
-    <h1>UserLogIn</h1>
+
+<form #loginForm="ngForm" class="col-lg-6" style="margin-left:25%;"  *ngIf="!authService.getUser()">
+  <div class="alert alert-danger container-fluid" role="alert" *ngIf="message"> 
+    {{message}}
+  </div>
+    <img src="../assets/img_avatar.png">
   <div class="form-group " >
-    <label for="username">UserName:</label>
-    <input class="form-control" name="username" #username>
-  </div>
-
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" name="username" placeholder="Enter Username" ngModel required #username>
+  </div> 
   <div class="form-group ">
-    <label for="password">PassWord:</label>
-    <input type="password" class="form-control" name="password" #password>
-  </div>
-
-  <button type="submit" class="btn btn-success" (click)="login(username.value,password.value)">
-    Submit
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" name="password" placeholder="Enter Password" ngModel required #password>
+  </div> 
+  <button type="submit" class="btn btn-primary" (click)="login(username.value,password.value)" [disabled]="!loginForm.form.valid">
+    Login
   </button>
   
 </form>
 
-<div class="well" *ngIf="authService.getUser()">
-  <div class="container">
+<div  class="container-fluid" *ngIf="authService.getUser()">
 
     <h1 class="jumbotron">Welcome {{authService.getUser()}}</h1>
 
-  </div>
   <!--  <a href (click)="logout()">Logout</a>  -->
 
 </div>

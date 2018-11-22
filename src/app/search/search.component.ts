@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 
@@ -10,7 +9,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class SearchComponent implements OnInit {
   
-  id : number;
+  empid = 1;
   employee : Employee;
 
   constructor(private employeeService:EmployeeService) { }
@@ -18,8 +17,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  getEmp(id:number){
-    console.log(id);
-    return this.employeeService.getEmployeeById(id).subscribe(data=>this.employee=data,error=>console.log(error));
+  getEmp(empid:number){
+    console.log(empid);
+    return this.employeeService.getEmployeeById(empid).subscribe(data=>this.employee=data,error=>console.log(error));
   }
 }

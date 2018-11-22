@@ -6,3 +6,19 @@ label{
     font-size: 18px;
 }
 
+form{
+    border:2px solid black;
+    border-radius:5px;
+    padding: 20px;
+    
+    
+}
+
+table,tr,td,th{
+    border:1px solid black;
+}
+
+h1{
+    color:green;
+}
+

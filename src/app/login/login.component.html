@@ -2,20 +2,30 @@
 
 
 
-<form #loginForm="ngForm" class="col-lg-6" style="margin-left:25%;"  *ngIf="!authService.getUser()">
+<form #loginForm="ngForm" class="col-lg-6" style="margin-left:25%;"  *ngIf="!authService.getUser()" >
   <div class="alert alert-danger container-fluid" role="alert" *ngIf="message"> 
     {{message}}
   </div>
     <img src="../assets/img_avatar.png">
   <div class="form-group " >
     <label for="username">Username:</label>
-    <input type="text" class="form-control" name="username" placeholder="Enter Username" ngModel required #username>
+    <input type="text" class="form-control" name="username" placeholder="Enter Username" ngModel required #username="ngModel">
   </div> 
+
+  <div *ngIf="(username.invalid)&&(username.touched)" class="alert alert-danger">
+      Username is required
+    </div>
+
+
   <div class="form-group ">
     <label for="password">Password:</label>
-    <input type="password" class="form-control" name="password" placeholder="Enter Password" ngModel required #password>
+    <input type="password" class="form-control" name="password" placeholder="Enter Password" ngModel required #password="ngModel">
   </div> 
-  <button type="submit" class="btn btn-primary" (click)="login(username.value,password.value)" [disabled]="!loginForm.form.valid">
+  <div *ngIf="(password.invalid)&&(password.touched)" class="alert alert-danger">
+      Password is required
+    </div>
+
+  <button type="submit" class="btn-lg btn-primary" (click)="login(username.value,password.value)" [disabled]="!loginForm.form.valid">
     Login
   </button>
   

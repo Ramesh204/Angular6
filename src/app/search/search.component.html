@@ -1,10 +1,15 @@
-<form class="container-fluid col-lg-6" >
+
+<form class="container-fluid col-lg-6" style="margin-left:25%;" #searchForm="ngForm">
+  <h1>Search Employee</h1>
   <div class="form-group">
     <label for="empid">EmpId</label>
-    <input type="number" class="form-control" id="empid" #empid>
+    <input type="number" class="form-control" id="empid" name="empid" [(ngModel)]="empid"  required #id="ngModel">
   </div>
-
-  <button type="submit" class="btn btn-success" (click)="getEmp(empid.value)">Submit</button> 
+ 
+  <div *ngIf="id.invalid" class="alert alert-danger">
+    EmpId is required
+  </div>
+  <button type="submit" class="btn btn-success" (click)="getEmp(empid.value)" [disabled]="!searchForm.form.valid">Submit</button> 
 
 </form>
 
@@ -31,3 +36,5 @@
     </tbody>
   </table>
 </div>
+
+

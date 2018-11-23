@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 
+
+
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
@@ -11,10 +13,12 @@ export class CreateEmployeeComponent implements OnInit {
   employee : Employee = new Employee();
   submitted = false;
 
-  constructor(private employeeService:EmployeeService ) { }
+  
+  constructor(private employeeService:EmployeeService) {
+    
+   }
 
-  ngOnInit() {
-  }
+  
 
   save(){
     console.log(this.employee);
@@ -23,6 +27,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmit(){
     this.submitted=true;
+    
     this.save();
   }
 
@@ -30,6 +35,14 @@ export class CreateEmployeeComponent implements OnInit {
     this.submitted = false;
     this.employee = new Employee();
   }
+
+
+
+  ngOnInit() {
+
+  }
+
+  
 
 
 }

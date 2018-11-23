@@ -2,11 +2,12 @@
 
 
 
-<form #loginForm="ngForm" class="col-lg-6" style="margin-left:25%;"  *ngIf="!authService.getUser()" >
-  <div class="alert alert-danger container-fluid" role="alert" *ngIf="message"> 
-    {{message}}
-  </div>
+<form #loginForm="ngForm" class="col-lg-5" style="margin-left:25%;"  *ngIf="!authService.getUser()" >
+  
     <img src="../assets/img_avatar.png">
+    <div class="alert alert-danger container-fluid" role="alert" *ngIf="message"> 
+        {{message}}
+      </div>
   <div class="form-group " >
     <label for="username">Username:</label>
     <input type="text" class="form-control" name="username" placeholder="Enter Username" ngModel required #username="ngModel">

@@ -1,19 +1,24 @@
 
-<form class="container-fluid col-lg-6" style="margin-left:25%;" #searchForm="ngForm">
+<form  class="container-fluid col-lg-6" style="margin-left:25%;" #searchForm="ngForm" >
   <h1>Search Employee</h1>
   <div class="form-group">
     <label for="empid">EmpId</label>
-    <input type="number" class="form-control" id="empid" name="empid" [(ngModel)]="empid"  required #id="ngModel">
+    <input type="text" class="form-control" id="empid" name="empid" [(ngModel)]="empid" required   #id="ngModel">
   </div>
  
-  <div *ngIf="id.invalid" class="alert alert-danger">
-    EmpId is required
+  <div *ngIf="id.errors && (id.dirty || id.touched)" class="alert alert-danger">
+    <div [hidden]="!id.errors.required">
+      Emp id is required
+    </div>
+    
   </div>
-  <button type="submit" class="btn btn-success" (click)="getEmp(empid.value)" [disabled]="!searchForm.form.valid">Submit</button> 
+  
+  <button type="submit" class="btn btn-success" (click)="getEmp(id.value)" [disabled]="!searchForm.form.valid">Submit</button> 
 
 </form>
 
-
+<br>
+<br>
 
 <div  *ngIf="employee"  class="container">
   <table class="table">
@@ -36,5 +41,3 @@
     </tbody>
   </table>
 </div>
-
-

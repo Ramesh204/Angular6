@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     
     this.message='';
     if(!this.authService.login(username,password)){
-      this.message = "Incorrect credentials Entered";
+      this.message = "Username or Password is incorrect";
     }
     return false;
   }

@@ -2,47 +2,94 @@
 
 <div [hidden]="submitted" class="col-lg-6" style="margin-left:25%;" >
     
-  <form (ngSubmit)="onSubmit()" #addEmp="ngForm" >
+  <form (ngSubmit)="onSubmit()" #addEmp="ngForm" novalidate>
       <h1>Add Employee</h1>
     <div class="form-group">
       <label for="empid">EmpId</label>
-      <input type="number" class="form-control" id="empid" [(ngModel)]="employee.empid" name="empid" required #empid="ngModel">
+      <input type="text" class="form-control" id="empid" [(ngModel)]="employee.empid" name="empid" required #empid="ngModel">
     </div>
-    <div *ngIf="(empid.invalid)&&(empid.touched)" class="alert alert-danger">
-        Empid is required
+    <div *ngIf="empid.errors &&(empid.dirty || empid.touched)" class="alert alert-danger">
+        <div [hidden]="!empid.errors.required">
+          Empid is required
+        </div>
       </div>
       
 
     <div class="form-group">
       <label for="firstName">FirstName</label>
-      <input type="text" class="form-control" id="firstName" name="firstName" required   [(ngModel)]="employee.firstName" #firstName="ngModel">
+      <input type="text" class="form-control" id="firstName" name="firstName" required 
+      minlength="3" maxlength="16"   [(ngModel)]="employee.firstName" #firstName="ngModel">
     </div>
 
-  <div *ngIf="(firstName.invalid)&&(firstName.touched)" class="alert alert-danger">
-    FirstName is Required
-  </div>
+    <div *ngIf="firstName.errors &&(firstName.dirty || firstName.touched)" class="alert alert-danger">
+        <div [hidden]="!firstName.errors.required">
+          FirstName is required
+        </div>
+        <div [hidden]="!firstName.errors.minlength">
+          FirstName is atleast of 3 characters long
+        </div>
+      </div>
 
     <div class="form-group">
       <label for="lastName">LastName</label>
-      <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName" name="lastName" required>
+      <input type="text" class="form-control" id="lastName" 
+      [(ngModel)]="employee.lastName" name="lastName" required minlength="3" maxlength="16" #lastName="ngModel">
     </div>
+
+    <div *ngIf="lastName.errors &&(lastName.dirty || lastName.touched)" class="alert alert-danger">
+        <div [hidden]="!lastName.errors.required">
+          LastName is required
+        </div>
+        <div [hidden]="!lastName.errors.minlength">
+          LastName is atleast of 3 characters long
+        </div>
+      </div>
+
 
     <div class="form-group">
       <label for="emailAddress">EmailAddress</label>
-      <input type="email" class="form-control" id="emailAddress" [(ngModel)]="employee.emailAddress" name="emailAddress" required>
+      <input type="text" class="form-control" id="emailAddress"
+       [(ngModel)]="employee.emailAddress" name="emailAddress" required email #email="ngModel">
     </div>
+
+    <div *ngIf="email.errors &&(email.dirty || email.touched)" class="alert alert-danger">
+        <div [hidden]="!email.errors.required">
+          Email Address is required
+        </div>
+        <div [hidden]="!email.errors.email">
+          Enter correct email address
+        </div>
+      </div>
+
+     
 
     <div class="form-group">
       <label for="phoneNumber">PhoneNumber</label>
-      <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="employee.phoneNumber" name="phoneNumber" required>
+      <input type="number" class="form-control" id="phoneNumber"
+       [(ngModel)]="employee.phoneNumber" name="phoneNumber" pattern="/^[7-9][0-9]{9}$/" required #phoneNumber="ngModel">
     </div>
-
+    
+    <div *ngIf="phoneNumber.errors &&(phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+        <div [hidden]="!phoneNumber.errors.required">
+          Phone Number is required
+        </div>
+        <div *ngIf="phoneNumber.errors.pattern">
+          Enter 10 digit phone number
+        </div>
+      </div>
     <button type="submit" class="btn btn-success" [disabled]="!addEmp.form.valid">Submit</button>
 
   </form>
 </div>
-{{submitted}}
+
+
+
+
+
 <div [hidden]="!submitted">
   <h4>You Added The Employee SuccessFully</h4>
   <button class="btn btn-success" (click)="newEmployee()">Add Employee</button>
 </div>
+
+
+

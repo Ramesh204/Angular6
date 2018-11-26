@@ -11,6 +11,8 @@ h2{
 form{
    
     padding: 10px;
+    margin-top: 10%;
+    margin-left:30%;
 }
 
 img{
@@ -19,7 +21,11 @@ img{
     border-radius: 30px;
 }
 
-
+#userdiv{
+    border:2px solid black;
+    border-radius:5px;
+    padding: 20px;
+}
 
 
 

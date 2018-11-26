@@ -1,8 +1,23 @@
-button#deletebtn{
-    font-size:25px;
+
+
+h1{
+    color: maroon;
+    text-align: center;
     
 }
 
-h1{
-    color : green;
+button#btn3{
+    width:20%;
+    
+}
+button#btn4{
+    width:20%;
+    margin-left:60%;
+    
+}
+
+#empsdiv{
+    border:2px solid black;
+    border-radius:5px;
+    padding: 20px;
 }

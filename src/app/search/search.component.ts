@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ export class SearchComponent implements OnInit {
   empid = 1;
   employee : Employee;
 
-  constructor(private employeeService:EmployeeService) { }
+  constructor(private employeeService:EmployeeService,private location:Location) { }
 
   ngOnInit() {
   }
@@ -20,5 +21,10 @@ export class SearchComponent implements OnInit {
   getEmp(empid:number){
     console.log(empid);
     return this.employeeService.getEmployeeById(empid).subscribe(data=>this.employee=data,error=>console.log(error));
+  }
+
+  goback():void{
+    this.location.back();
+
   }
 }

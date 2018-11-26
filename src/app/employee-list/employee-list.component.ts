@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Employee} from '../employee';
 import { EmployeeService } from '../employee.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,7 +14,7 @@ export class EmployeeListComponent implements OnInit {
   employees : Observable<Employee[]>;
 
 
-  constructor(private employeeService:EmployeeService) { }
+  constructor(private employeeService:EmployeeService,private location:Location) { }
 
   ngOnInit() {
     this.reloadData();
@@ -32,5 +33,25 @@ export class EmployeeListComponent implements OnInit {
      },
      error => console.log('ERROR:'+error)
    ); 
+
+
   }
+
+  goback():void{
+    this.location.back();
+  }
+
+
+deleteEmp(id:number){
+this.employeeService.deleteEmployee(id).subscribe(
+  data=>{console.log(data);
+  this.reloadData();},
+  error=>console.log(error));
+}  
+
+updateEmp(id:number,employee:Employee){
+  this.employeeService.updateEmplyoee(id,employee).
+  subscribe(data=>console.log(data),error=>console.log(error));
+}
+
 }

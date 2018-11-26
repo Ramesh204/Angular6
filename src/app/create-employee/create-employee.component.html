@@ -3,10 +3,11 @@
 <div [hidden]="submitted" class="col-lg-6" style="margin-left:25%;" >
     
   <form (ngSubmit)="onSubmit()" #addEmp="ngForm" novalidate>
-      <h1>Add Employee</h1>
+      <h2>Add Employee</h2>
     <div class="form-group">
       <label for="empid">EmpId</label>
-      <input type="text" class="form-control" id="empid" [(ngModel)]="employee.empid" name="empid" required #empid="ngModel">
+      <input type="text" class="form-control" id="empid"
+       [(ngModel)]="employee.empid" name="empid" placeholder="Enter Employee Id" required #empid="ngModel">
     </div>
     <div *ngIf="empid.errors &&(empid.dirty || empid.touched)" class="alert alert-danger">
         <div [hidden]="!empid.errors.required">
@@ -17,7 +18,7 @@
 
     <div class="form-group">
       <label for="firstName">FirstName</label>
-      <input type="text" class="form-control" id="firstName" name="firstName" required 
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter Firstname" required 
       minlength="3" maxlength="16"   [(ngModel)]="employee.firstName" #firstName="ngModel">
     </div>
 
@@ -32,7 +33,7 @@
 
     <div class="form-group">
       <label for="lastName">LastName</label>
-      <input type="text" class="form-control" id="lastName" 
+      <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname"
       [(ngModel)]="employee.lastName" name="lastName" required minlength="3" maxlength="16" #lastName="ngModel">
     </div>
 
@@ -48,7 +49,7 @@
 
     <div class="form-group">
       <label for="emailAddress">EmailAddress</label>
-      <input type="text" class="form-control" id="emailAddress"
+      <input type="text" class="form-control" id="emailAddress" placeholder="Enter Email Address"
        [(ngModel)]="employee.emailAddress" name="emailAddress" required email #email="ngModel">
     </div>
 
@@ -65,19 +66,21 @@
 
     <div class="form-group">
       <label for="phoneNumber">PhoneNumber</label>
-      <input type="number" class="form-control" id="phoneNumber"
-       [(ngModel)]="employee.phoneNumber" name="phoneNumber" pattern="/^[7-9][0-9]{9}$/" required #phoneNumber="ngModel">
+      <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Phonenumber"
+       [(ngModel)]="employee.phoneNumber" name="phoneNumber"  required #phoneNumber="ngModel">
     </div>
     
     <div *ngIf="phoneNumber.errors &&(phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
         <div [hidden]="!phoneNumber.errors.required">
           Phone Number is required
         </div>
-        <div *ngIf="phoneNumber.errors.pattern">
-          Enter 10 digit phone number
-        </div>
+       
       </div>
-    <button type="submit" class="btn btn-success" [disabled]="!addEmp.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" 
+    [disabled]="!addEmp.form.valid" id="btn1">Submit</button>
+
+    <button type="button" class="btn btn-info" (click)="goback()" id="btn2"
+    >Back</button> 
 
   </form>
 </div>
@@ -86,10 +89,19 @@
 
 
 
-<div [hidden]="!submitted">
-  <h4>You Added The Employee SuccessFully</h4>
-  <button class="btn btn-success" (click)="newEmployee()">Add Employee</button>
+
+<div [hidden]="!submitted" id="empdiv"  class="col-lg-6" style="margin-left:25%;">
+<h2> You Added The Employee Successfully</h2>
+<br>
+<br>
+<hr/>
+<button class="btn btn-success" (click)="newEmployee()" id="btn1">Add Employee</button>
+
+<button type="submit" class="btn btn-info" (click)="goback()" id="btn2"
+>Back</button> 
+
 </div>
+
 
 
 

@@ -1,13 +1,45 @@
-<div class="container"> 
-<h1 class="jumbotron">Employees</h1>
-</div>
+<div class="container" id="empsdiv"> 
 
-<div *ngFor="let employee of employees | async">
-    
-  <app-employee-details [employee]='employee'></app-employee-details>
-</div>
+<h1>Employees</h1>
 
 
-<div class="container">
-  <button type="button" id="deletebtn" class="button btn-danger" (click)='deleteEmps()'>Delete All</button>
-</div>
+
+ 
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>EmailAddress</th>
+                  <th>PhoneNumber</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              
+          <tbody>
+            <tr  *ngFor="let employee of employees | async" class="info" >
+              <td>{{employee.firstName}}</td>
+              <td>{{employee.lastName}}</td>
+              <td>{{employee.emailAddress}}</td>
+              <td>{{employee.phoneNumber}}</td>
+              <td>
+                  <button class="btn btn-danger"  (click)="deleteEmp(employee.empid)" id="btn1">Delete</button> 
+                  <button class="btn btn-warning" (click)="showUpdateForm()" id="btn2">Update</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button type="submit" id="btn3" class="btn btn-danger" 
+                (click)="deleteEmps()" >Delete All</button>
+              
+                <button type="button" class="btn btn-info" (click)="goback()" id="btn4"
+                >Back</button>
+              </td> 
+            </tr>
+          </tbody>
+        </table>
+</div>        
+        
+
+      
+

@@ -18,7 +18,16 @@ table,tr,td,th{
     border:1px solid black;
 }
 
-h1{
+h2{
     color:green;
+}
+
+#btn1{
+    width:40%;
+}
+
+#btn2{
+    width:40%;
+    margin-left:20%;
 }
 

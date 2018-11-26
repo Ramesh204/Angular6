@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
-
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class CreateEmployeeComponent implements OnInit {
   submitted = false;
 
   
-  constructor(private employeeService:EmployeeService) {
+  constructor(private employeeService:EmployeeService,private location:Location) {
     
    }
 
@@ -43,6 +43,8 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   
-
+  goback():void{
+    this.location.back();
+  }
 
 }

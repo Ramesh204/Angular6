@@ -3,15 +3,18 @@
 
 
 
-<div class="container-fluid">  
+<div class="container-fluid" *ngIf="authService.isLoggedIn()">  
   <nav class="navbar navbar-inverse">
-    <a class="navbar-brand">Software Solutions</a>
-    <a class="navbar-brand" [routerLink]="['/login']">Login |</a>
-    <a class="navbar-brand" [routerLink]="['/employee']">Employees |</a>
-    <a class="navbar-brand" [routerLink]="['/add']">Add |</a>
-    <a class="navbar-brand" [routerLink]="['/search']">Search</a>
+    <div class="navbar-header">
+    <a class="navbar-brand" [routerLink]="['/']">Software Solutions |</a>
+  </div>
+  <ul class="nav navbar-nav">
 
-  
+  <li>  <a  [routerLink]="['/employee']">Employees |</a> </li>
+  <li> <a  [routerLink]="['/add']">Add |</a> </li>
+  <li> <a  [routerLink]="['/search']">Search</a> </li> 
+
+  </ul>
 
     <button  *ngIf="authService.getUser()" id="logoutbtn" type="submit" (click)="logout()" class="btn btn-danger">Logout</button> 
 

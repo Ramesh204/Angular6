@@ -1,3 +1,5 @@
+
+
 <div class="container" id="empsdiv"> 
 
 <h1>Employees</h1>
@@ -17,14 +19,25 @@
               </thead>
               
           <tbody>
-            <tr  *ngFor="let employee of employees | async" class="info" >
-              <td>{{employee.firstName}}</td>
-              <td>{{employee.lastName}}</td>
-              <td>{{employee.emailAddress}}</td>
-              <td>{{employee.phoneNumber}}</td>
+            <tr  *ngFor="let employee of employees | async" class="info"  >
+              <td>
+                
+               <input type="text" class="form-control" [(ngModel)]="employee.firstName" [disabled]="isDisable" >
+              </td>
+              <td >
+                  <input type="text" class="form-control" [(ngModel)]="employee.lastName" [disabled]="isDisable" >
+
+              </td>
+              <td >
+                  <input type="text" class="form-control" [(ngModel)]="employee.emailAddress" [disabled]="isDisable" >  
+              </td>
+              <td>
+                  <input type="text" class="form-control" [(ngModel)]="employee.phoneNumber" [disabled]="isDisable" >
+              </td>
               <td>
                   <button class="btn btn-danger"  (click)="deleteEmp(employee.empid)" id="btn1">Delete</button> 
-                  <button class="btn btn-warning" (click)="showUpdateForm()" id="btn2">Update</button>
+                  <button *ngIf="isDisable"  class="btn btn-warning"  (click)="isDisable=flase" id="btn2">edit</button>
+                  <button  *ngIf="!isDisable" class="btn btn-warning"  (click)="isDisable=true;updateEmp(employee)" id="btn2">Update</button>
               </td>
             </tr>
             <tr>
@@ -42,4 +55,22 @@
         
 
       
+<!--
+<table>
 
+  <tbody>
+    <tr  *ngFor="let employee of employees | async" class="info" >
+        <td>
+           {{employee.firstName}}
+        </td>
+        <td >{{employee.lastName}}</td>
+        <td >{{employee.emailAddress}}</td>
+        <td>{{employee.phoneNumber}}</td>
+        <td>
+            <button class="btn btn-danger"  (click)="deleteEmp(employee.empid)" id="btn1">Delete</button> 
+            <button class="btn btn-warning"   id="btn2">Update</button>
+        </td>
+
+      </tbody>
+</table>
+-->

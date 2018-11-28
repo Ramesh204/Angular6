@@ -67,12 +67,15 @@
     <div class="form-group">
       <label for="phoneNumber">PhoneNumber</label>
       <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Phonenumber"
-       [(ngModel)]="employee.phoneNumber" name="phoneNumber"  required #phoneNumber="ngModel">
+       [(ngModel)]="employee.phoneNumber" name="phoneNumber" pattern="^[6-9]\d{9}$"  required #phoneNumber="ngModel">
     </div>
     
     <div *ngIf="phoneNumber.errors &&(phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
         <div [hidden]="!phoneNumber.errors.required">
           Phone Number is required
+        </div>
+        <div [hidden]="!phoneNumber.errors.pattern">
+          Enter the valid phonenumber
         </div>
        
       </div>

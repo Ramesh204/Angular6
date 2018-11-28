@@ -13,6 +13,8 @@ export class EmployeeListComponent implements OnInit {
  
   employees : Observable<Employee[]>;
 
+  isDisable = true;  
+
 
   constructor(private employeeService:EmployeeService,private location:Location) { }
 
@@ -35,6 +37,7 @@ export class EmployeeListComponent implements OnInit {
    ); 
 
 
+  
   }
 
   goback():void{
@@ -49,9 +52,9 @@ this.employeeService.deleteEmployee(id).subscribe(
   error=>console.log(error));
 }  
 
-updateEmp(id:number,employee:Employee){
-  this.employeeService.updateEmplyoee(id,employee).
-  subscribe(data=>console.log(data),error=>console.log(error));
+updateEmp(emp:Employee){
+  console.log(emp.empid);
+  this.employeeService.updateEmplyoee(emp.empid,emp).subscribe(data=>console.log(data),error=>console.log(error));
 }
 
 }

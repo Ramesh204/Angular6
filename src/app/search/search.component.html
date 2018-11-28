@@ -3,7 +3,8 @@
   <h2>Search Employee</h2>
   <div class="form-group">
     <label for="empid">EmpId</label>
-    <input type="text" class="form-control" id="empid" name="empid" [(ngModel)]="empid" required   #id="ngModel">
+    <input type="text" class="form-control" id="empid" name="empid" placeholder="Enter the Employee ID"
+    [(ngModel)]="empid" required   #id="ngModel">
   </div>
  
   <div *ngIf="id.errors && (id.dirty || id.touched)" class="alert alert-danger">
